@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:10:15 by edforte           #+#    #+#             */
-/*   Updated: 2024/08/31 23:28:18 by edforte          ###   ########.fr       */
+/*   Updated: 2024/09/10 16:49:27 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,85 +37,13 @@ int	end_program(int err_code)
 	return (1);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
-{
-	char	*strres;
-	int		i;
-	int		j;
-	int		len_max;
-
-	if (!s1 || !s2)
-		return (NULL);
-	i = 0;
-	j = 0;
-	len_max = ((ft_strlen(s1) + ft_strlen(s2)) + 1);
-	strres = (char *) malloc(len_max * sizeof(char));
-	if (!strres)
-		return (NULL);
-	while (s1[i])
-	{
-		strres[i] = s1[i];
-		i ++;
-	}
-	while (s2[j])
-		strres[i++] = s2[j++];
-	strres[i] = '\0';
-	free((char *)s1);
-	return (strres);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t			i;
-	unsigned char	*a;
-	unsigned char	*b;
-
-	i = 0;
-	a = (unsigned char *)s1;
-	b = (unsigned char *)s2;
-	while ((a[i] || b[i]) && i < n)
-	{
-		if (a[i] != b[i])
-			return (a[i] - b[i]);
-		i ++;
-	}
-	return (0);
-}
-
-char	*ft_strdup_mod(const char *s1)
+char	*slash_adder(char *s1)
 {
 	char	*s2;
-	size_t	i;
-
-	s2 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 2));
-	if (!s2)
-		return (0);
-	s2[0] = '/'; 
-	i = 1;
-	while (s1[i])
-	{
-		s2[i] = s1[i];
-		i ++;
-	}
-	s2[i] = '\0';
-	return (s2);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*s2;
-	size_t	i;
-
-	s2 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (!s2)
-		return (0);
-	i = 0;
-	while (s1[i])
-	{
-		s2[i] = s1[i];
-		i ++;
-	}
-	s2[i] = '\0';
+	char	*slash;
+	
+	slash = ft_strdup("/");
+	s2 = ft_strjoin(slash, s1);
 	return (s2);
 }
 
@@ -130,14 +58,4 @@ void	free_matrix(char **matrix)
 		rows ++;
 	}
 	free(matrix);
-}
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i ++;
-	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:38:41 by edforte           #+#    #+#             */
-/*   Updated: 2024/08/31 23:09:26 by edforte          ###   ########.fr       */
+/*   Updated: 2024/09/10 16:28:13 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int		end_program(int err_code);
 int		child_process(char **av, int *fd, char** env);
 int		parent_process(char **av, int *fd, char **env);
 char	*ft_strjoin(char *s1, char *s2);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	**ft_split(char const *s, char c);
 char	*find_path(char **env, char *cmd);
 char	*ft_strdup(const char *s1);
-char	*ft_strdup_mod(const char *s1);
+char	*slash_adder(char *s1);
 void	free_matrix(char **matrix);
 int		ft_strlen(const char *str);
 
