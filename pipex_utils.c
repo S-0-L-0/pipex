@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:10:15 by edforte           #+#    #+#             */
-/*   Updated: 2024/08/30 18:57:53 by edforte          ###   ########.fr       */
+/*   Updated: 2024/08/31 23:28:18 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	input_check(int ac, char **av)
 		return(1);
 	}
 	if (access(av[1], F_OK | R_OK) == -1)
+	{
 		return (end_program(errno));
+	}
 	if (access(av[4], F_OK) == 0)
 	{
 		if (access(av[4], R_OK | W_OK) == -1)
@@ -29,9 +31,9 @@ int	input_check(int ac, char **av)
 	return (0);
 }
 
-int	end_program(int errno)
+int	end_program(int err_code)
 {
-	ft_printf("Error\n %s\n", strerror(errno));
+	ft_printf("Error: %s\n", strerror(err_code));
 	return (1);
 }
 
@@ -128,4 +130,14 @@ void	free_matrix(char **matrix)
 		rows ++;
 	}
 	free(matrix);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i ++;
+	return (i);
 }

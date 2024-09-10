@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:23:07 by edforte           #+#    #+#             */
-/*   Updated: 2024/08/30 19:07:26 by edforte          ###   ########.fr       */
+/*   Updated: 2024/09/08 13:28:11 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	main(int ac, char **av, char **env)
 	int		fd[2];
 	pid_t	pid;
 
-	if (input_check != 0)
+	if (input_check(ac, av) != 0)
+	{
 		return (1);
+	}
 	if (pipe(fd) != 0)
 		return (end_program(errno));
 	pid = fork();
@@ -40,12 +42,14 @@ int	child_process(char **av, int *fd, char **env)
 	int	file1;
 	char	*path;
 	char	*cmd;
+	int	test = 0;
 
 	file1 = open(av[1], O_RDONLY);
 	if (file1 == -1)
 		return(1);
-	dup2(file1, 0);
-	dup2(fd[1], 1);
+	dup2(STDOUT_FILENO, fd[1]);
+	dup2(STDIN_FILENO, file1);
+	close(fd[0]);
 	cmd = ft_strdup_mod(av[2]);
 	path = find_path(env, cmd);
 	free (cmd);
@@ -54,8 +58,7 @@ int	child_process(char **av, int *fd, char **env)
 		free(path);
 		return (1);
 	}
-	// printf("%s\n", path);
-	execve(path, av[2], env);
+	printf("%s\n", path);
 	free(path);
 	
 }

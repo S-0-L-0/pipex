@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 20:38:41 by edforte           #+#    #+#             */
-/*   Updated: 2024/08/30 18:58:06 by edforte          ###   ########.fr       */
+/*   Updated: 2024/08/31 23:09:26 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "ft_printf/ft_printf.h"
 
 int		input_check(int ac, char **av);
-int		end_program(int errno);
+int		end_program(int err_code);
 int		child_process(char **av, int *fd, char** env);
 int		parent_process(char **av, int *fd, char **env);
 char	*ft_strjoin(char *s1, char *s2);
@@ -34,6 +34,7 @@ char	*find_path(char **env, char *cmd);
 char	*ft_strdup(const char *s1);
 char	*ft_strdup_mod(const char *s1);
 void	free_matrix(char **matrix);
+int		ft_strlen(const char *str);
 
 
 #endif
