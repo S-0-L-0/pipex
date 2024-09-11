@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 16:50:50 by edforte           #+#    #+#             */
-/*   Updated: 2024/09/10 17:04:45 by edforte          ###   ########.fr       */
+/*   Updated: 2024/09/11 15:26:12 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,11 @@ char	*find_path(char **env, char *cmd)
 			path = ft_strdup(all_path[lines]);
 			free_matrix(all_path);
 			free(cmd);
-			return(path);
+			return (path);
 		}
 		lines ++;
 	}
 	free(cmd);
 	free_matrix(all_path);
 	return (NULL);
-}
-
-void	cmd_exe(char *path, char *flag, char **env)
-{
-	
 }
