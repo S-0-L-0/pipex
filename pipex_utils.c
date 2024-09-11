@@ -6,7 +6,7 @@
 /*   By: edforte <edforte@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 18:10:15 by edforte           #+#    #+#             */
-/*   Updated: 2024/09/11 15:29:25 by edforte          ###   ########.fr       */
+/*   Updated: 2024/09/11 16:05:37 by edforte          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	input_check(int ac, char **av)
 {
 	if (ac != 5)
 	{
-		perror("invalid number of parameters.");
+		ft_printf("invalid number of parameters.");
 		return (1);
 	}
 	if (access(av[1], F_OK | R_OK) == -1)
